@@ -4,7 +4,6 @@ const test = require('tape');
 const mavencc = require('../index');
 
 test('generic search.', (t) => {
-  t.plan(2);
   mavencc.genericSearch('aesh', 3)
     .then(response => {
       const artifact = JSON.parse(response.body).response.docs[0].a;
