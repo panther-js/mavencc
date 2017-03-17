@@ -1,0 +1,30 @@
+{
+  "name": "mavencc",
+  "version": "0.1.0",
+  "description": "A simple maven central client.",
+  "main": "index.js",
+  "homepage": "https://github.com/panther-js/mavencc#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/panther-js/mavencc.git"
+  },
+  "scripts": {
+    "lint": "eslint index.js test/test.js",
+    "test": "tape test/test.js | tap-spec"
+  },
+  "author": "Helio Frota",
+  "license": "MIT",
+  "dependencies": {
+    "roi": "^0.15.0"
+  },
+  "devDependencies": {
+    "eslint": "^3.8.1",
+    "eslint-config-semistandard": "^7.0.0",
+    "eslint-config-standard": "^6.2.0",
+    "eslint-plugin-promise": "^3.3.0",
+    "eslint-plugin-react": "^6.4.1",
+    "eslint-plugin-standard": "^2.0.1",
+    "tap-spec": "^4.1.1",
+    "tape": "^4.6.3"
+  }
+}
