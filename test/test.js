@@ -3,8 +3,21 @@
 const test = require('tape');
 const mavencc = require('../index');
 
-test('generic search.', (t) => {
-  mavencc.genericSearch('wildfly-swarm', 3)
+test('basic artifact search.', (t) => {
+  mavencc.basicArtifactSearch('wildfly-swarm', 3)
+    .then(response => {
+      const artifact = JSON.parse(response.body).response.docs[0].a;
+      t.equal(artifact, 'wildfly-swarm', 'wildfly-swarm found.');
+      t.end();
+    })
+    .catch(e => {
+      console.error(e.stack);
+      t.fail(e);
+    });
+});
+
+test('artifact search.', (t) => {
+  mavencc.artifactSearch('wildfly-swarm', 3)
     .then(response => {
       const artifact = JSON.parse(response.body).response.docs[0].a;
       t.equal(artifact, 'wildfly-swarm', 'wildfly-swarm found.');

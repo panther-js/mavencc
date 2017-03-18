@@ -24,7 +24,11 @@ npm install mavencc -S
 ```javascript
 const mavencc = require('mavencc');
 
-mavencc.genericSearch('wildfly-swarm', 5)
+mavencc.basicArtifactSearch('wildfly-swarm', 5)
+.then(result => console.log(result))
+.catch(error => console.log(error));
+
+mavencc.artifactSearch('wildfly-swarm', 5)
 .then(result => console.log(result))
 .catch(error => console.log(error));
 
@@ -39,6 +43,7 @@ mavencc.artifactsByGroupId('org.wildfly.swarm', 5)
 
 ## You can use to
 
-* A generic search.
+* A basic artifact search.
+* Search any artifactId irrespective of groupId
 * List all versions of an artifact.
 * Search for all artifacts in a groupId.
