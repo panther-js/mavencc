@@ -14,4 +14,13 @@ function listVersions (g, a, rows) {
   return roi.get({ endpoint: url });
 }
 
-module.exports = {genericSearch, listVersions};
+function artifactsByGroupId (g, rows) {
+  const url = `${BASE_URL}${g}&rows=${rows}&wt=json`;
+  return roi.get({ endpoint: url });
+}
+
+module.exports = {
+  genericSearch,
+  listVersions,
+  artifactsByGroupId
+};
