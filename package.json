@@ -12,6 +12,10 @@
     "lint": "eslint index.js test/test.js",
     "test": "tape test/test.js | tap-spec"
   },
+  "keywords": [
+    "maven",
+    "client"
+  ],
   "author": "Helio Frota",
   "license": "MIT",
   "dependencies": {
