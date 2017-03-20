@@ -25,19 +25,19 @@ npm install mavencc -S
 const mavencc = require('mavencc');
 
 mavencc.basicArtifactSearch('wildfly-swarm', 5)
-.then(result => console.log(result))
+.then(console.log)
 .catch(error => console.log(error));
 
 mavencc.artifactSearch('wildfly-swarm', 5)
-.then(result => console.log(result))
+.then(console.log)
 .catch(error => console.log(error));
 
 mavencc.listVersions('org.wildfly.swarm', 'wildfly-swarm', 5)
-.then(result => console.log(result))
+.then(console.log)
 .catch(error => console.log(error));
 
 mavencc.artifactsByGroupId('org.wildfly.swarm', 5)
-.then(result => console.log(result))
+.then(console.log)
 .catch(error => console.log(error));
 ```
 
