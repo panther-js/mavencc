@@ -24,9 +24,15 @@ function basicArtifactSearch (a, rows) {
   return roi.get({ endpoint: url });
 }
 
+function artifactByClassname (c, rows) {
+  const url = `${BASE_URL}${c}&rows=${rows}&wt=json`;
+  return roi.get({ endpoint: url });
+}
+
 module.exports = {
   artifactSearch,
   basicArtifactSearch,
   listVersions,
-  artifactsByGroupId
+  artifactsByGroupId,
+  artifactByClassname
 };

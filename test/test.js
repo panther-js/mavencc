@@ -54,3 +54,16 @@ test('artifacts by groupId.', (t) => {
       t.fail(e);
     });
 });
+
+test('artifacts by className.', (t) => {
+  mavencc.artifactByClassname('junit', 5)
+    .then(response => {
+      const artifact = JSON.parse(response.body).response.docs[4].a;
+      t.equal(artifact, 'junit', 'junit found.');
+      t.end();
+    })
+    .catch(e => {
+      console.error(e.stack);
+      t.fail(e);
+    });
+});
