@@ -71,8 +71,8 @@ test('artifacts by className.', (t) => {
 test('artifacts by fully-classname.', (t) => {
   mavencc.artifactByFullyClassname('org.specs.runner.JUnit', 5)
     .then(response => {
-      const artifact = JSON.parse(response.body).response.docs[4].a;
-      t.equal(artifact, 'junit', 'junit found.');
+      const artifact = JSON.parse(response.body).response.docs[0].a;
+      t.equal(artifact, 'specs', 'specs found.');
       t.end();
     })
     .catch(e => {

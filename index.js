@@ -29,8 +29,8 @@ function artifactByClassname (c, rows) {
   return roi.get({ endpoint: url });
 }
 
-function artifactByFullyClassname (cf, rows) {
-  const url = `${BASE_URL}${cf}&rows=${rows}&wt=json`;
+function artifactByFullyClassname (fc, rows) {
+  const url = `${BASE_URL}fc:${fc}&rows=${rows}&wt=json`;
   return roi.get({ endpoint: url });
 }
 
