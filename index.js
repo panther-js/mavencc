@@ -29,10 +29,16 @@ function artifactByClassname (c, rows) {
   return roi.get({ endpoint: url });
 }
 
+function artifactByFullyClassname (cf, rows) {
+  const url = `${BASE_URL}${cf}&rows=${rows}&wt=json`;
+  return roi.get({ endpoint: url });
+}
+
 module.exports = {
   artifactSearch,
   basicArtifactSearch,
   listVersions,
   artifactsByGroupId,
-  artifactByClassname
+  artifactByClassname,
+  artifactByFullyClassname
 };
