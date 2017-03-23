@@ -80,3 +80,16 @@ test('artifacts by fully-classname.', (t) => {
       t.fail(e);
     });
 });
+
+test('artifacts by sha1.', (t) => {
+  mavencc.artifactBySHA1('35379fb6526fd019f331542b4e9ae2e566c57933', 5)
+    .then(response => {
+      const artifact = JSON.parse(response.body).response.docs[0].a;
+      t.equal(artifact, 'jetty-webapp', 'jetty-webapp found.');
+      t.end();
+    })
+    .catch(e => {
+      console.error(e.stack);
+      t.fail(e);
+    });
+});

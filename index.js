@@ -34,11 +34,17 @@ function artifactByFullyClassname (fc, rows) {
   return roi.get({ endpoint: url });
 }
 
+function artifactBySHA1 (s, rows) {
+  const url = `${BASE_URL}1:${s}&rows=${rows}&wt=json`;
+  return roi.get({ endpoint: url });
+}
+
 module.exports = {
   artifactSearch,
   basicArtifactSearch,
   listVersions,
   artifactsByGroupId,
   artifactByClassname,
-  artifactByFullyClassname
+  artifactByFullyClassname,
+  artifactBySHA1
 };
