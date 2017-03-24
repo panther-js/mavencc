@@ -36,7 +36,15 @@ mavencc.listVersions('org.wildfly.swarm', 'wildfly-swarm', 5)
 .then(console.log)
 .catch(error => console.log(error));
 
-mavencc.artifactsByGroupId('org.wildfly.swarm', 5)
+mavencc.artifactByClassname('junit', 5)
+.then(console.log)
+.catch(error => console.log(error));
+
+mavencc.artifactByFullyClassname('org.specs.runner.JUnit', 5)
+.then(console.log)
+.catch(error => console.log(error));
+
+mavencc.artifactBySHA1('35379fb6526fd019f331542b4e9ae2e566c57933', 5)
 .then(console.log)
 .catch(error => console.log(error));
 ```
