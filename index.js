@@ -39,6 +39,11 @@ function artifactBySHA1 (s, rows) {
   return roi.get({ endpoint: url });
 }
 
+function searchTags (s, rows) {
+  const url = `${BASE_URL}tags:${s}&rows=${rows}&wt=json`;
+  return roi.get({ endpoint: url });
+}
+
 module.exports = {
   artifactSearch,
   basicArtifactSearch,
@@ -46,5 +51,6 @@ module.exports = {
   artifactsByGroupId,
   artifactByClassname,
   artifactByFullyClassname,
-  artifactBySHA1
+  artifactBySHA1,
+  searchTags
 };

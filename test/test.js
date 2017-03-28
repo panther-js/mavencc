@@ -93,3 +93,16 @@ test('artifacts by sha1.', (t) => {
       t.fail(e);
     });
 });
+
+test('list tags', (t) => {
+  mavencc.searchTags('sbtplugin', 5)
+    .then(response => {
+      const artifact = JSON.parse(response.body).response.docs[0].a;
+      t.equal(artifact, 'aether-deploy', 'aether-deploy found.');
+      t.end();
+    })
+    .catch(e => {
+      console.error(e.stack);
+      t.fail(e);
+    });
+});
