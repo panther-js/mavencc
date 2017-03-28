@@ -46,7 +46,7 @@ test('artifacts by groupId.', (t) => {
   mavencc.artifactsByGroupId('org.wildfly.swarm', 5)
     .then(response => {
       const artifact = JSON.parse(response.body).response.docs[4].a;
-      t.equal(artifact, 'microprofile', 'microprofile found.');
+      t.equal(artifact, 'config-api-parent', 'config-api-parent found.');
       t.end();
     })
     .catch(e => {
