@@ -3,6 +3,7 @@
 const roi = require('roi');
 
 const BASE_URL = 'http://search.maven.org/solrsearch/select?q=';
+const BASE_URL_DOWNLOAD = 'http://search.maven.org/remotecontent?filepath=';
 
 function listVersions (g, a, rows) {
   const url = `${BASE_URL}${g}+AND+a:${a}&rows=${rows}&wt=json`;
@@ -44,6 +45,11 @@ function searchTags (s, rows) {
   return roi.get({ endpoint: url });
 }
 
+function downloadArtifact (f, path) {
+  const url = `${BASE_URL_DOWNLOAD}${f}`;
+  return roi.download({ endpoint: url }, path);
+}
+
 module.exports = {
   artifactSearch,
   basicArtifactSearch,
@@ -52,5 +58,6 @@ module.exports = {
   artifactByClassname,
   artifactByFullyClassname,
   artifactBySHA1,
-  searchTags
+  searchTags,
+  downloadArtifact
 };

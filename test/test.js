@@ -2,6 +2,7 @@
 
 const test = require('tape');
 const mavencc = require('../index');
+const fs = require('fs');
 
 test('basic artifact search.', (t) => {
   mavencc.basicArtifactSearch('wildfly-swarm', 3)
@@ -46,7 +47,7 @@ test('artifacts by groupId.', (t) => {
   mavencc.artifactsByGroupId('org.wildfly.swarm', 5)
     .then(response => {
       const artifact = JSON.parse(response.body).response.docs[4].a;
-      t.equal(artifact, 'config-api-parent', 'config-api-parent found.');
+      t.equal(artifact, 'camel-cdi', 'camel-cdi found.');
       t.end();
     })
     .catch(e => {
@@ -98,11 +99,24 @@ test('list tags', (t) => {
   mavencc.searchTags('sbtplugin', 5)
     .then(response => {
       const artifact = JSON.parse(response.body).response.docs[0].a;
-      t.equal(artifact, 'aether-deploy', 'aether-deploy found.');
+      t.equal(artifact, 'sbt-jooq', 'sbt-jooq found.');
       t.end();
     })
     .catch(e => {
       console.error(e.stack);
       t.fail(e);
     });
+});
+
+test('should download artifact', (t) => {
+  mavencc.downloadArtifact('com/jolira/guice/3.0.0/guice-3.0.0.pom', '/tmp/guice.pom')
+  .then(x => {
+    try {
+      t.equal(fs.statSync('/tmp/guice.pom').isFile(), true);
+    } catch (e) {
+      console.error(e);
+      t.fail(e);
+    }
+    t.end();
+  });
 });
