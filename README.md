@@ -47,6 +47,14 @@ mavencc.artifactByFullyClassname('org.specs.runner.JUnit', 5)
 mavencc.artifactBySHA1('35379fb6526fd019f331542b4e9ae2e566c57933', 5)
 .then(console.log)
 .catch(error => console.log(error));
+
+mavencc.searchTags('sbtplugin', 5)
+.then(console.log)
+.catch(error => console.log(error));
+
+mavencc.downloadArtifact('com/jolira/guice/3.0.0/guice-3.0.0.pom', '/tmp/guice.pom')
+.then(console.log)
+.catch(error => console.log(error));
 ```
 
 ## You can use to
