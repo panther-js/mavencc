@@ -73,7 +73,7 @@ test('artifacts by fully-classname.', (t) => {
   mavencc.artifactByFullyClassname('org.specs.runner.JUnit', 5)
     .then(response => {
       const artifact = JSON.parse(response.body).response.docs[0].a;
-      t.equal(artifact, 'specs', 'specs found.');
+      t.notEqual(artifact, '', 'one result was found');
       t.end();
     })
     .catch(e => {
@@ -99,7 +99,7 @@ test('list tags', (t) => {
   mavencc.searchTags('sbtplugin', 5)
     .then(response => {
       const artifact = JSON.parse(response.body).response.docs[0].a;
-      t.equal(artifact, 'sbt-jooq', 'sbt-jooq found.');
+      t.notEqual(artifact, '', 'one result was found');
       t.end();
     })
     .catch(e => {
@@ -112,7 +112,7 @@ test('should download artifact', (t) => {
   mavencc.downloadArtifact('com/jolira/guice/3.0.0/guice-3.0.0.pom', '/tmp/guice.pom')
   .then(x => {
     try {
-      t.equal(fs.statSync('/tmp/guice.pom').isFile(), true);
+      t.equal(fs.statSync('/tmp/guice.pom').isFile(), true, 'File found.');
     } catch (e) {
       console.error(e);
       t.fail(e);
