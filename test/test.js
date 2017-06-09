@@ -47,7 +47,7 @@ test('artifacts by groupId.', (t) => {
   mavencc.artifactsByGroupId('org.wildfly.swarm', 5)
     .then(response => {
       const artifact = JSON.parse(response.body).response.docs[4].a;
-      t.equal(artifact, 'camel-cdi', 'camel-cdi found.');
+      t.equal(artifact, 'camel-salesforce', 'camel-cdi found.');
       t.end();
     })
     .catch(e => {
