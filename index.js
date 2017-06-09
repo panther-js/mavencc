@@ -2,53 +2,26 @@
 
 const roi = require('roi');
 
-const BASE_URL = 'http://search.maven.org/solrsearch/select?q=';
-const BASE_URL_DOWNLOAD = 'http://search.maven.org/remotecontent?filepath=';
+const URL = 'http://search.maven.org/solrsearch/select?q=';
+const DOWNLOAD = 'http://search.maven.org/remotecontent?filepath=';
 
-function listVersions (g, a, rows) {
-  const url = `${BASE_URL}${g}+AND+a:${a}&rows=${rows}&wt=json`;
-  return roi.get({ endpoint: url });
-}
+const listVersions = (g, a, rows) => roi.get({ endpoint: `${URL}${g}+AND+a:${a}&rows=${rows}&wt=json` });
 
-function artifactsByGroupId (g, rows) {
-  const url = `${BASE_URL}${g}&rows=${rows}&wt=json`;
-  return roi.get({ endpoint: url });
-}
+const artifactsByGroupId = (g, rows) => roi.get({ endpoint: `${URL}${g}&rows=${rows}&wt=json` });
 
-function artifactSearch (a, rows) {
-  const url = `${BASE_URL}a:${a}&rows=${rows}&wt=json`;
-  return roi.get({ endpoint: url });
-}
+const artifactSearch = (a, rows) => roi.get({ endpoint: `${URL}a:${a}&rows=${rows}&wt=json` });
 
-function basicArtifactSearch (a, rows) {
-  const url = `${BASE_URL}${a}&rows=${rows}&wt=json`;
-  return roi.get({ endpoint: url });
-}
+const basicArtifactSearch = (a, rows) => roi.get({ endpoint: `${URL}${a}&rows=${rows}&wt=json` });
 
-function artifactByClassname (c, rows) {
-  const url = `${BASE_URL}${c}&rows=${rows}&wt=json`;
-  return roi.get({ endpoint: url });
-}
+const artifactByClassname = (c, rows) => roi.get({ endpoint: `${URL}${c}&rows=${rows}&wt=json` });
 
-function artifactByFullyClassname (fc, rows) {
-  const url = `${BASE_URL}fc:${fc}&rows=${rows}&wt=json`;
-  return roi.get({ endpoint: url });
-}
+const artifactByFullyClassname = (fc, rows) => roi.get({ endpoint: `${URL}fc:${fc}&rows=${rows}&wt=json` });
 
-function artifactBySHA1 (s, rows) {
-  const url = `${BASE_URL}1:${s}&rows=${rows}&wt=json`;
-  return roi.get({ endpoint: url });
-}
+const artifactBySHA1 = (s, rows) => roi.get({ endpoint: `${URL}1:${s}&rows=${rows}&wt=json` });
 
-function searchTags (s, rows) {
-  const url = `${BASE_URL}tags:${s}&rows=${rows}&wt=json`;
-  return roi.get({ endpoint: url });
-}
+const searchTags = (s, rows) => roi.get({ endpoint: `${URL}tags:${s}&rows=${rows}&wt=json` });
 
-function downloadArtifact (f, path) {
-  const url = `${BASE_URL_DOWNLOAD}${f}`;
-  return roi.download({ endpoint: url }, path);
-}
+const downloadArtifact = (f, path) => roi.download({ endpoint: `${DOWNLOAD}${f}` }, path);
 
 module.exports = {
   artifactSearch,
