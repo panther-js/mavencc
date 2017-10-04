@@ -19,7 +19,7 @@
   "author": "Helio Frota",
   "license": "MIT",
   "dependencies": {
-    "roi": "^0.15.0"
+    "roi": "^0.16.1"
   },
   "devDependencies": {
     "eslint": "^3.8.1",
