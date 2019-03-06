@@ -110,13 +110,13 @@ test('list tags', (t) => {
 
 test('should download artifact', (t) => {
   mavencc.downloadArtifact('com/jolira/guice/3.0.0/guice-3.0.0.pom', '/tmp/guice.pom')
-  .then(x => {
-    try {
-      t.equal(fs.statSync('/tmp/guice.pom').isFile(), true, 'File found.');
-    } catch (e) {
-      console.error(e);
-      t.fail(e);
-    }
-    t.end();
-  });
+    .then(x => {
+      try {
+        t.equal(fs.statSync('/tmp/guice.pom').isFile(), true, 'File found.');
+      } catch (e) {
+        console.error(e);
+        t.fail(e);
+      }
+      t.end();
+    });
 });
